@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevDocs Lite</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <main class="shell">
+        <header class="topbar">
+            <div>
+                <h1>DevDocs Lite</h1>
+                <p id="projectSubtitle">Upload a ZIP codebase to begin.</p>
+            </div>
+            <form id="uploadForm" class="upload-form">
+                <input type="file" id="fileInput" accept=".zip">
+                <button type="submit">Upload ZIP</button>
+            </form>
+        </header>
+
+        <p id="uploadStatus" class="status" role="status"></p>
+
+        <section class="layout">
+            <aside class="sidebar">
+                <section class="panel">
+                    <div class="panel-heading">
+                        <h2>Project</h2>
+                        <span id="fileCount">0 files</span>
+                    </div>
+                    <div id="languageList" class="language-list"></div>
+                </section>
+
+                <section class="panel file-panel">
+                    <div class="panel-heading">
+                        <h2>Files</h2>
+                        <span id="selectedFileLabel">No file selected</span>
+                    </div>
+                    <input type="search" id="fileFilter" placeholder="Filter files">
+                    <div id="fileList" class="file-list"></div>
+                </section>
+            </aside>
+
+            <section class="workspace">
+                <section class="panel ask-panel">
+                    <form id="askForm" class="ask-form">
+                        <input type="text" id="questionInput" placeholder="Ask about routes, components, config, or errors">
+                        <button type="submit">Ask</button>
+                    </form>
+                    <pre id="answerBox" class="answer-box">Answers will appear here.</pre>
+                </section>
+
+                <section class="panel tools-panel">
+                    <form id="searchForm" class="search-form">
+                        <input type="search" id="searchInput" placeholder="Search indexed code">
+                        <button type="submit">Search</button>
+                    </form>
+                    <div id="searchResults" class="search-results"></div>
+                </section>
+
+                <section class="panel preview-panel">
+                    <div class="panel-heading">
+                        <h2 id="previewTitle">Preview</h2>
+                        <span id="previewMeta"></span>
+                    </div>
+                    <pre id="previewBox" class="code-preview">Select a file to preview it.</pre>
+                </section>
+            </section>
+        </section>
+    </main>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
