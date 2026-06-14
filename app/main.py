@@ -5,6 +5,7 @@ from fastapi.templating import Jinja2Templates
 from starlette.requests import Request
 
 from .config import BASE_DIR, FILES_INDEX_PATH, METADATA_PATH
+from .explainer import explain_class, explain_file, explain_function, explain_project
 from .ingest import ingest_upload
 from .insights import classes_by_file, functions_by_file, imports_by_file
 from .metadata import ensure_insight_metadata
@@ -16,7 +17,7 @@ from .tree import build_tree
 from .utils import ensure_workspace, read_json
 
 
-app = FastAPI(title="DevDocs Lite", version="0.2.0")
+app = FastAPI(title="DevDocs Lite", version="0.3.0")
 app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 templates = Jinja2Templates(directory=BASE_DIR / "templates")
 
@@ -92,3 +93,30 @@ def search(q: str = Query(..., min_length=1)) -> list[dict]:
 @app.post("/ask")
 def ask(payload: AskRequest) -> dict:
     return answer_question(payload.question, get_entries())
+
+
+@app.get("/explain/file")
+def explain_file_endpoint(path: str = Query(..., min_length=1)) -> dict:
+    """Return a natural-language explanation of a specific file."""
+    return explain_file(path, get_entries())
+
+
+@app.get("/explain/project")
+def explain_project_endpoint() -> dict:
+    """Return a full project explanation with architecture and workflows."""
+    entries = get_entries()
+    metadata = read_json(METADATA_PATH, {"file_count": 0, "languages": {}, "important_files": []})
+    metadata = ensure_insight_metadata(metadata, entries)
+    return explain_project(entries, metadata)
+
+
+@app.get("/explain/function")
+def explain_function_endpoint(name: str = Query(..., min_length=1)) -> dict:
+    """Return an explanation of a specific function or method."""
+    return explain_function(name, get_entries())
+
+
+@app.get("/explain/class")
+def explain_class_endpoint(name: str = Query(..., min_length=1)) -> dict:
+    """Return an explanation of a specific class."""
+    return explain_class(name, get_entries())

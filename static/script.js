@@ -19,6 +19,8 @@ const els = {
     askForm: document.getElementById("askForm"),
     questionInput: document.getElementById("questionInput"),
     answerBox: document.getElementById("answerBox"),
+    explainProjectBtn: document.getElementById("explainProjectBtn"),
+    explainBox: document.getElementById("explainBox"),
     searchForm: document.getElementById("searchForm"),
     searchInput: document.getElementById("searchInput"),
     searchResults: document.getElementById("searchResults"),
@@ -234,6 +236,26 @@ async function previewFile(path) {
     renderFiles();
 }
 
+async function explainFile(path) {
+    els.explainBox.textContent = "Generating explanation...";
+    try {
+        const data = await requestJson(`/explain/file?path=${encodeURIComponent(path)}`);
+        els.explainBox.textContent = data.explanation || "No explanation available.";
+    } catch (error) {
+        els.explainBox.textContent = error.message;
+    }
+}
+
+async function explainProject() {
+    els.explainBox.textContent = "Analysing repository...";
+    try {
+        const data = await requestJson("/explain/project");
+        els.explainBox.textContent = data.explanation || "No project explanation available.";
+    } catch (error) {
+        els.explainBox.textContent = error.message;
+    }
+}
+
 els.uploadForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (!els.fileInput.files.length) {
@@ -249,6 +271,7 @@ els.uploadForm.addEventListener("submit", async (event) => {
         const data = await requestJson("/upload", { method: "POST", body: formData });
         els.uploadStatus.textContent = data.message;
         await refreshProject();
+        explainProject();
         if (state.files[0]) {
             await previewFile(state.files[0].path);
         }
@@ -298,12 +321,22 @@ els.languageFilter.addEventListener("change", renderFiles);
 
 els.fileList.addEventListener("click", async (event) => {
     const button = event.target.closest("[data-path]");
-    if (button) await previewFile(button.dataset.path);
+    if (button) {
+        await previewFile(button.dataset.path);
+        explainFile(button.dataset.path);
+    }
 });
 
 els.searchResults.addEventListener("click", async (event) => {
     const button = event.target.closest("[data-path]");
-    if (button) await previewFile(button.dataset.path);
+    if (button) {
+        await previewFile(button.dataset.path);
+        explainFile(button.dataset.path);
+    }
+});
+
+els.explainProjectBtn.addEventListener("click", () => {
+    explainProject();
 });
 
 refreshProject().catch((error) => {

@@ -260,6 +260,40 @@ button:hover {
     line-height: 1.45;
 }
 
+.explain-panel .panel-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.explain-btn {
+    font-size: 13px;
+    padding: 6px 14px;
+    background: var(--warm);
+    border-radius: 6px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.explain-btn:hover {
+    background: #92400e;
+}
+
+.explain-box {
+    min-height: 200px;
+    max-height: 50vh;
+    overflow: auto;
+    margin-top: 12px;
+    padding: 14px;
+    border-radius: 8px;
+    background: var(--code);
+    color: #f8fafc;
+    border: 1px solid #263244;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
 @media (max-width: 880px) {
     .shell {
         padding: 16px;
