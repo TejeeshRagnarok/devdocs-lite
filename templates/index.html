@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-<<<<<<< HEAD
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DevDocs Lite</title>
     <link rel="stylesheet" href="/static/style.css">
@@ -32,12 +31,24 @@
                     <div id="languageList" class="language-list"></div>
                 </section>
 
+                <section class="panel">
+                    <div class="panel-heading">
+                        <h2>Repository Insights</h2>
+                    </div>
+                    <div id="insightsGrid" class="insights-grid"></div>
+                </section>
+
                 <section class="panel file-panel">
                     <div class="panel-heading">
                         <h2>Files</h2>
                         <span id="selectedFileLabel">No file selected</span>
                     </div>
-                    <input type="search" id="fileFilter" placeholder="Filter files">
+                    <div class="file-filters">
+                        <input type="search" id="fileFilter" placeholder="Filter files">
+                        <select id="languageFilter" aria-label="Filter files by language">
+                            <option value="">All languages</option>
+                        </select>
+                    </div>
                     <div id="fileList" class="file-list"></div>
                 </section>
             </aside>
@@ -73,107 +84,3 @@
     <script src="/static/script.js"></script>
 </body>
 </html>
-=======
-    <title>DevDocs Lite</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
-    <div class="app">
-        <header class="header">
-            <h1>DevDocs Lite</h1>
-            <p>Understand your codebase instantly</p>
-        </header>
-
-        <div class="grid">
-            <div class="card">
-                <h2>Upload Codebase</h2>
-                <input type="file" id="fileInput">
-                <button class="primary-btn" onclick="uploadFile()">Upload</button>
-                <p id="uploadStatus" class="status"></p>
-            </div>
-
-            <div class="card">
-                <h2>Ask Question</h2>
-                <input type="text" id="questionInput" placeholder="How does authentication work?">
-                <button class="primary-btn" onclick="askQuestion()">Ask</button>
-            </div>
-
-            <div class="card full-width">
-                <h2>Answer</h2>
-                <div id="answerBox" class="answer-box">Your answer will appear here...</div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-       async function uploadFile() {
-    const fileInput = document.getElementById("fileInput");
-    const status = document.getElementById("uploadStatus");
-
-    if (!fileInput.files.length) {
-        status.innerText = "Please select a ZIP file.";
-        return;
-    }
-
-    const formData = new FormData();
-    formData.append("file", fileInput.files[0]);
-
-    status.innerText = "Uploading...";
-
-    try {
-        const response = await fetch("/upload", {
-            method: "POST",
-            body: formData
-        });
-
-        // 🔥 Handle non-JSON safely
-        const text = await response.text();
-
-        try {
-            const data = JSON.parse(text);
-
-            if (!response.ok) {
-                status.innerText = data.detail || "Upload failed";
-                return;
-            }
-
-            status.innerText = data.message;
-
-        } catch {
-            // If response is not JSON
-            status.innerText = "Server error: " + text;
-        }
-
-    } catch (error) {
-        status.innerText = "Network error: " + error.message;
-    }
-}
-        async function askQuestion() {
-            const question = document.getElementById("questionInput").value;
-            const answerBox = document.getElementById("answerBox");
-
-            if (!question) {
-                answerBox.innerText = "Please enter a question!";
-                return;
-            }
-
-            answerBox.innerText = "Thinking...";
-
-            try {
-                const response = await fetch("/ask", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ question })
-                });
-
-                const data = await response.json();
-                answerBox.innerText = data.answer;
-            } catch (error) {
-                answerBox.innerText = "Network error: " + error.message;
-            }
-        }
-    </script>
-</body>
-</html>
->>>>>>> f89bf6497d40f4c8bc15e288c50ea09198ca8a27

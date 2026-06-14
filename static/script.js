@@ -11,7 +11,9 @@ const els = {
     projectSubtitle: document.getElementById("projectSubtitle"),
     fileCount: document.getElementById("fileCount"),
     languageList: document.getElementById("languageList"),
+    insightsGrid: document.getElementById("insightsGrid"),
     fileFilter: document.getElementById("fileFilter"),
+    languageFilter: document.getElementById("languageFilter"),
     fileList: document.getElementById("fileList"),
     selectedFileLabel: document.getElementById("selectedFileLabel"),
     askForm: document.getElementById("askForm"),
@@ -67,6 +69,44 @@ function formatBytes(bytes) {
     return `${value.toFixed(index ? 1 : 0)} ${units[index]}`;
 }
 
+function formatInsightFile(file) {
+    if (!file || !file.path) return "None";
+    return `${file.path} (${file.lines || 0} LOC)`;
+}
+
+function renderInsights(summary) {
+    const items = [
+        ["Python Files", summary.python_files ?? 0],
+        ["Functions", summary.function_count ?? 0],
+        ["Classes", summary.class_count ?? 0],
+        ["Imports", summary.import_count ?? 0],
+        ["Avg LOC", Math.round(summary.average_loc ?? 0)],
+        ["Largest File", formatInsightFile(summary.largest_file)],
+        ["Smallest File", formatInsightFile(summary.smallest_file)],
+    ];
+
+    els.insightsGrid.innerHTML = items.map(([label, value]) => `
+        <div class="insight-item">
+            <strong>${escapeHtml(value)}</strong>
+            <span>${escapeHtml(label)}</span>
+        </div>
+    `).join("");
+}
+
+function renderLanguageFilter() {
+    const selected = els.languageFilter.value;
+    const languages = Object.keys((state.summary && state.summary.languages) || {});
+    els.languageFilter.innerHTML = [
+        `<option value="">All languages</option>`,
+        ...languages.map((language) => `
+            <option value="${escapeHtml(language)}">${escapeHtml(language)}</option>
+        `),
+    ].join("");
+    if (languages.includes(selected)) {
+        els.languageFilter.value = selected;
+    }
+}
+
 function renderSummary() {
     const summary = state.summary || {};
     const fileCount = summary.file_count || 0;
@@ -78,8 +118,12 @@ function renderSummary() {
     const languages = Object.entries(summary.languages || {});
     if (!languages.length) {
         els.languageList.innerHTML = `<p class="empty">No languages indexed yet.</p>`;
+        els.insightsGrid.innerHTML = `<p class="empty">Upload a project to see repository insights.</p>`;
         return;
     }
+
+    renderInsights(summary);
+    renderLanguageFilter();
 
     const total = languages.reduce((sum, [, count]) => sum + count, 0);
     els.languageList.innerHTML = languages.map(([language, count]) => {
@@ -98,7 +142,11 @@ function renderSummary() {
 
 function renderFiles() {
     const filter = els.fileFilter.value.trim().toLowerCase();
-    const files = state.files.filter((file) => file.path.toLowerCase().includes(filter));
+    const language = els.languageFilter.value;
+    const files = state.files.filter((file) => (
+        file.path.toLowerCase().includes(filter)
+        && (!language || file.language === language)
+    ));
 
     if (!files.length) {
         els.fileList.innerHTML = `<p class="empty">No matching files.</p>`;
@@ -111,6 +159,42 @@ function renderFiles() {
             <small>${escapeHtml(file.language)} - ${file.lines} lines</small>
         </button>
     `).join("");
+}
+
+function formatPreviewList(values, suffix = "") {
+    if (!values || !values.length) return "  (none)";
+    return values.map((value) => `  ${value}${suffix}`).join("\n");
+}
+
+function buildPreviewContent(data) {
+    if (!data.insights) {
+        return data.content || "(This file is empty.)";
+    }
+
+    const ins = data.insights;
+    const separator = "─".repeat(60);
+    const parts = [];
+
+    if (ins.docstring) {
+        parts.push("Docstring:", `  ${ins.docstring}`, "");
+    }
+
+    parts.push(
+        "Functions:",
+        formatPreviewList(ins.functions, "()"),
+        "",
+        "Classes:",
+        formatPreviewList(ins.classes),
+        "",
+        "Imports:",
+        formatPreviewList(ins.imports),
+        "",
+        separator,
+        "",
+        data.content || "(This file is empty.)",
+    );
+
+    return parts.join("\n");
 }
 
 function renderSearchResults(results) {
@@ -144,8 +228,9 @@ async function previewFile(path) {
     state.selectedPath = data.path;
     els.selectedFileLabel.textContent = data.path;
     els.previewTitle.textContent = data.path.split("/").pop();
-    els.previewMeta.textContent = `${data.language}${data.truncated ? " - truncated" : ""}`;
-    els.previewBox.textContent = data.content || "This file is empty.";
+    const moduleLabel = data.insights && data.insights.module ? ` - ${data.insights.module}` : "";
+    els.previewMeta.textContent = `${data.language}${moduleLabel}${data.truncated ? " - truncated" : ""}`;
+    els.previewBox.textContent = buildPreviewContent(data);
     renderFiles();
 }
 
@@ -209,6 +294,7 @@ els.searchForm.addEventListener("submit", async (event) => {
 });
 
 els.fileFilter.addEventListener("input", renderFiles);
+els.languageFilter.addEventListener("change", renderFiles);
 
 els.fileList.addEventListener("click", async (event) => {
     const button = event.target.closest("[data-path]");

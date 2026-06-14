@@ -17,6 +17,7 @@ class PreviewResponse(BaseModel):
     language: str
     content: str
     truncated: bool
+    insights: dict | None = None
 
 
 class UploadResponse(BaseModel):

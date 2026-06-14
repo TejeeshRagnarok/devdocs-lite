@@ -1,0 +1,82 @@
+[
+  {
+    "file": "devdocs-lite-main/app/ingest.py",
+    "module": "devdocs-lite-main.app.ingest",
+    "language": "Python",
+    "imports": [],
+    "functions": [],
+    "classes": [],
+    "docstring": null,
+    "error": ""
+  },
+  {
+    "file": "devdocs-lite-main/app/main.py",
+    "module": "devdocs-lite-main.app.main",
+    "language": "Python",
+    "imports": [
+      "os",
+      "shutil",
+      "zipfile",
+      "FastAPI",
+      "Request",
+      "UploadFile",
+      "File",
+      "HTTPException",
+      "HTMLResponse",
+      "StaticFiles",
+      "Jinja2Templates"
+    ],
+    "functions": [
+      {
+        "name": "home",
+        "async": true,
+        "decorators": [
+          "app.get('/', response_class=HTMLResponse)"
+        ],
+        "docstring": "",
+        "line": 22
+      },
+      {
+        "name": "upload_file",
+        "async": true,
+        "decorators": [
+          "app.post('/upload')"
+        ],
+        "docstring": "",
+        "line": 30
+      },
+      {
+        "name": "ask_question",
+        "async": true,
+        "decorators": [
+          "app.post('/ask')"
+        ],
+        "docstring": "",
+        "line": 55
+      }
+    ],
+    "classes": [],
+    "docstring": null,
+    "error": ""
+  },
+  {
+    "file": "devdocs-lite-main/app/rag.py",
+    "module": "devdocs-lite-main.app.rag",
+    "language": "Python",
+    "imports": [],
+    "functions": [],
+    "classes": [],
+    "docstring": null,
+    "error": ""
+  },
+  {
+    "file": "devdocs-lite-main/app/utils.py",
+    "module": "devdocs-lite-main.app.utils",
+    "language": "Python",
+    "imports": [],
+    "functions": [],
+    "classes": [],
+    "docstring": null,
+    "error": ""
+  }
+]

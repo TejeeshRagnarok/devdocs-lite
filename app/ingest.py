@@ -3,7 +3,8 @@ from pathlib import Path
 
 from fastapi import HTTPException, UploadFile
 
-from .config import CURRENT_PROJECT_DIR, FILES_INDEX_PATH, MAX_UPLOAD_SIZE, METADATA_PATH, UPLOAD_DIR
+from .config import CURRENT_PROJECT_DIR, FILES_INDEX_PATH, MAX_UPLOAD_SIZE, METADATA_PATH, PARSED_METADATA_PATH, UPLOAD_DIR
+from .insights import build_parsed_index
 from .metadata import build_metadata
 from .scanner import scan_project
 from .utils import ensure_workspace, is_relative_to, reset_directory, write_json
@@ -59,9 +60,11 @@ async def ingest_upload(file: UploadFile) -> dict:
     project_name = extract_zip(zip_path)
     entries = scan_project(CURRENT_PROJECT_DIR)
     metadata = build_metadata(entries, project_name)
+    parsed_metadata = build_parsed_index(entries)
 
     write_json(FILES_INDEX_PATH, entries)
     write_json(METADATA_PATH, metadata)
+    write_json(PARSED_METADATA_PATH, parsed_metadata)
 
     return {
         "message": f"Indexed {len(entries)} files from {project_name}.",

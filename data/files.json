@@ -8,6 +8,7 @@
     "lines": 0,
     "summary": "",
     "definitions": [],
+    "parsed": {},
     "content": "",
     "truncated": false
   },
@@ -20,6 +21,7 @@
     "lines": 219,
     "summary": "__pycache__/",
     "definitions": [],
+    "parsed": {},
     "content": "# Byte-compiled / optimized / DLL files\n__pycache__/\n*.py[codz]\n*$py.class\n\n# C extensions\n*.so\n\n# Distribution / packaging\n.Python\nbuild/\ndevelop-eggs/\ndist/\ndownloads/\neggs/\n.eggs/\nlib/\nlib64/\nparts/\nsdist/\nvar/\nwheels/\nshare/python-wheels/\n*.egg-info/\n.installed.cfg\n*.egg\nMANIFEST\n\n# PyInstaller\n#   Usually these files are written by a python script from a template\n#   before PyInstaller builds the exe, so as to inject date/other infos into it.\n*.manifest\n*.spec\n\n# Installer logs\npip-log.txt\npip-delete-this-directory.txt\n\n# Unit test / coverage reports\nhtmlcov/\n.tox/\n.nox/\n.coverage\n.coverage.*\n.cache\nnosetests.xml\ncoverage.xml\n*.cover\n*.py.cover\n.hypothesis/\n.pytest_cache/\ncover/\n\n# Translations\n*.mo\n*.pot\n\n# Django stuff:\n*.log\nlocal_settings.py\ndb.sqlite3\ndb.sqlite3-journal\n\n# Flask stuff:\ninstance/\n.webassets-cache\n\n# Scrapy stuff:\n.scrapy\n\n# Sphinx documentation\ndocs/_build/\n\n# PyBuilder\n.pybuilder/\ntarget/\n\n# Jupyter Notebook\n.ipynb_checkpoints\n\n# IPython\nprofile_default/\nipython_config.py\n\n# pyenv\n#   For a library or package, you might want to ignore these files since the code is\n#   intended to run in multiple environments; otherwise, check them in:\n# .python-version\n\n# pipenv\n#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.\n#   However, in case of collaboration, if having platform-specific dependencies or dependencies\n#   having no cross-platform support, pipenv may install dependencies that don't work, or not\n#   install all needed dependencies.\n# Pipfile.lock\n\n# UV\n#   Similar to Pipfile.lock, it is generally recommended to include uv.lock in version control.\n#   This is especially recommended for binary packages to ensure reproducibility, and is more\n#   commonly ignored for libraries.\n# uv.lock\n\n# poetry\n#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.\n#   This is especially recommended for binary packages to ensure reproducibility, and is more\n#   commonly ignored for libraries.\n#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control\n# poetry.lock\n# poetry.toml\n\n# pdm\n#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.\n#   pdm recommends including project-wide configuration in pdm.toml, but excluding .pdm-python.\n#   https://pdm-project.org/en/latest/usage/project/#working-with-version-control\n# pdm.lock\n# pdm.toml\n.pdm-python\n.pdm-build/\n\n# pixi\n#   Similar to Pipfile.lock, it is generally recommended to include pixi.lock in version control.\n# pixi.lock\n#   Pixi creates a virtual environment in the .pixi directory, just like venv module creates one\n#   in the .venv directory. It is recommended not to include this directory in version control.\n.pixi\n\n# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm\n__pypackages__/\n\n# Celery stuff\ncelerybeat-schedule\ncelerybeat.pid\n\n# Redis\n*.rdb\n*.aof\n*.pid\n\n# RabbitMQ\nmnesia/\nrabbitmq/\nrabbitmq-data/\n\n# ActiveMQ\nactivemq-data/\n\n# SageMath parsed files\n*.sage.py\n\n# Environments\n.env\n.envrc\n.venv\nenv/\nvenv/\nENV/\nenv.bak/\nvenv.bak/\n\n# Spyder project settings\n.spyderproject\n.spyproject\n\n# Rope project settings\n.ropeproject\n\n# mkdocs documentation\n/site\n\n# mypy\n.mypy_cache/\n.dmypy.json\ndmypy.json\n\n# Pyre type checker\n.pyre/\n\n# pytype static type analyzer\n.pytype/\n\n# Cython debug symbols\ncython_debug/\n\n# PyCharm\n#   JetBrains specific template is maintained in a separate JetBrains.gitignore that can\n#   be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore\n#   and can be added to the global gitignore or merged into this file.  For a more nuclear\n#   option (not recommended) you can uncomment the following to ignore the entire idea folder.\n# .idea/\n\n# Abstra\n#   Abstra is an AI-powered process automation framework.\n#   Ignore directories containing user credentials, local state, and settings.\n#   Learn more at https://abstra.io/docs\n.abstra/\n\n# Visual Studio Code\n#   Visual Studio Code specific template is maintained in a separate VisualStudioCode.gitignore \n#   that can be found at https://github.com/github/gitignore/blob/main/Global/VisualStudioCode.gitignore\n#   and can be added to the global gitignore or merged into this file. However, if you prefer, \n#   you could uncomment the following to ignore the entire vscode folder\n# .vscode/\n# Temporary file for partial code execution\ntempCodeRunnerFile.py\n\n# Ruff stuff:\n.ruff_cache/\n\n# PyPI configuration file\n.pypirc\n\n# Marimo\nmarimo/_static/\nmarimo/_lsp/\n__marimo__/\n\n# Streamlit\n.streamlit/secrets.toml\n",
     "truncated": false
   },
@@ -32,6 +34,16 @@
     "lines": 0,
     "summary": "",
     "definitions": [],
+    "parsed": {
+      "file": "devdocs-lite-main/app/ingest.py",
+      "module": "devdocs-lite-main.app.ingest",
+      "language": "Python",
+      "imports": [],
+      "functions": [],
+      "classes": [],
+      "docstring": null,
+      "error": ""
+    },
     "content": "",
     "truncated": false
   },
@@ -48,6 +60,56 @@
       "upload_file",
       "ask_question"
     ],
+    "parsed": {
+      "file": "devdocs-lite-main/app/main.py",
+      "module": "devdocs-lite-main.app.main",
+      "language": "Python",
+      "imports": [
+        "os",
+        "shutil",
+        "zipfile",
+        "FastAPI",
+        "Request",
+        "UploadFile",
+        "File",
+        "HTTPException",
+        "HTMLResponse",
+        "StaticFiles",
+        "Jinja2Templates"
+      ],
+      "functions": [
+        {
+          "name": "home",
+          "async": true,
+          "decorators": [
+            "app.get('/', response_class=HTMLResponse)"
+          ],
+          "docstring": "",
+          "line": 22
+        },
+        {
+          "name": "upload_file",
+          "async": true,
+          "decorators": [
+            "app.post('/upload')"
+          ],
+          "docstring": "",
+          "line": 30
+        },
+        {
+          "name": "ask_question",
+          "async": true,
+          "decorators": [
+            "app.post('/ask')"
+          ],
+          "docstring": "",
+          "line": 55
+        }
+      ],
+      "classes": [],
+      "docstring": null,
+      "error": ""
+    },
     "content": "import os\nimport shutil\nimport zipfile\n\nfrom fastapi import FastAPI, Request, UploadFile, File, HTTPException\nfrom fastapi.responses import HTMLResponse\nfrom fastapi.staticfiles import StaticFiles\nfrom starlette.templating import Jinja2Templates\n\napp = FastAPI()\n\napp.mount(\"/static\", StaticFiles(directory=\"static\"), name=\"static\")\ntemplates = Jinja2Templates(directory=\"templates\")\ntemplates.env.cache = {}\n\n# \u2705 Use /tmp \u2014 completely avoids the corrupt data/raw file\nRAW_DIR = \"/tmp/devdocs/raw\"\nEXTRACT_DIR = \"/tmp/devdocs/extracted\"\n\n\n@app.get(\"/\", response_class=HTMLResponse)\nasync def home(request: Request):\n    return templates.TemplateResponse(\n        \"index.html\",\n        context={\"request\": request}\n    )\n\n\n@app.post(\"/upload\")\nasync def upload_file(file: UploadFile = File(...)):\n    if not file.filename.endswith(\".zip\"):\n        raise HTTPException(status_code=400, detail=\"Only .zip files are supported\")\n\n    # Clean old extracted data\n    if os.path.exists(EXTRACT_DIR):\n        shutil.rmtree(EXTRACT_DIR)\n\n    os.makedirs(EXTRACT_DIR, exist_ok=True)\n    os.makedirs(RAW_DIR, exist_ok=True)\n\n    zip_path = os.path.join(RAW_DIR, file.filename)\n    with open(zip_path, \"wb\") as buffer:\n        shutil.copyfileobj(file.file, buffer)\n\n    try:\n        with zipfile.ZipFile(zip_path, \"r\") as zip_ref:\n            zip_ref.extractall(EXTRACT_DIR)\n    except zipfile.BadZipFile:\n        raise HTTPException(status_code=400, detail=\"Invalid ZIP file\")\n\n    return {\"message\": \"Upload successful. Codebase extracted.\"}\n\n\n@app.post(\"/ask\")\nasync def ask_question(data: dict):\n    question = data.get(\"question\")\n    if not question:\n        raise HTTPException(status_code=400, detail=\"Question is required\")\n    return {\"answer\": f\"You asked: {question}\"}",
     "truncated": false
   },
@@ -60,6 +122,16 @@
     "lines": 0,
     "summary": "",
     "definitions": [],
+    "parsed": {
+      "file": "devdocs-lite-main/app/rag.py",
+      "module": "devdocs-lite-main.app.rag",
+      "language": "Python",
+      "imports": [],
+      "functions": [],
+      "classes": [],
+      "docstring": null,
+      "error": ""
+    },
     "content": "",
     "truncated": false
   },
@@ -72,6 +144,16 @@
     "lines": 0,
     "summary": "",
     "definitions": [],
+    "parsed": {
+      "file": "devdocs-lite-main/app/utils.py",
+      "module": "devdocs-lite-main.app.utils",
+      "language": "Python",
+      "imports": [],
+      "functions": [],
+      "classes": [],
+      "docstring": null,
+      "error": ""
+    },
     "content": "",
     "truncated": false
   },
@@ -84,6 +166,7 @@
     "lines": 16,
     "summary": "A lightweight AI-powered tool to understand codebases by uploading a project and asking questions.",
     "definitions": [],
+    "parsed": {},
     "content": "# DevDocs Lite \ud83d\ude80\n\nA lightweight AI-powered tool to understand codebases by uploading a project and asking questions.\n\n## Features\n- Upload ZIP codebase\n- Extract files\n- Ask questions (AI coming next)\n\n## Tech Stack\n- FastAPI\n- HTML, CSS\n- Python\n\n## Status\nPhase 2 complete: File ingestion pipeline ready",
     "truncated": false
   },
@@ -96,6 +179,7 @@
     "lines": 4,
     "summary": "fastapi",
     "definitions": [],
+    "parsed": {},
     "content": "fastapi\nuvicorn\njinja2\npython-multipart",
     "truncated": false
   },
@@ -108,6 +192,7 @@
     "lines": 105,
     "summary": "margin: 0;",
     "definitions": [],
+    "parsed": {},
     "content": "/* Reset */\n* {\n    margin: 0;\n    padding: 0;\n    box-sizing: border-box;\n}\n\nbody {\n    font-family: 'Inter', sans-serif;\n    background: #0b1220;\n    color: #e5e7eb;\n}\n\n/* App Container */\n.app {\n    max-width: 900px;\n    margin: 50px auto;\n    padding: 20px;\n}\n\n/* Header */\n.header {\n    text-align: center;\n    margin-bottom: 40px;\n}\n\n.header h1 {\n    font-size: 32px;\n    font-weight: 600;\n}\n\n.header p {\n    color: #9ca3af;\n    margin-top: 8px;\n}\n\n/* Grid Layout */\n.grid {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    gap: 20px;\n}\n\n/* Cards */\n.card {\n    background: #111827;\n    padding: 20px;\n    border-radius: 12px;\n    box-shadow: 0 4px 20px rgba(0,0,0,0.3);\n}\n\n.full-width {\n    grid-column: span 2;\n}\n\n/* Titles */\n.card h2 {\n    margin-bottom: 15px;\n    font-size: 18px;\n}\n\n/* Inputs */\ninput[type=\"file\"],\ninput[type=\"text\"] {\n    width: 100%;\n    padding: 10px;\n    margin-bottom: 12px;\n    border-radius: 8px;\n    border: 1px solid #374151;\n    background: #020617;\n    color: white;\n}\n\n/* Buttons */\n.primary-btn {\n    width: 100%;\n    padding: 10px;\n    border: none;\n    border-radius: 8px;\n    background: #2563eb;\n    color: white;\n    font-weight: 500;\n    cursor: pointer;\n    transition: 0.2s;\n}\n\n.primary-btn:hover {\n    background: #1d4ed8;\n}\n\n/* Status text */\n.status {\n    margin-top: 10px;\n    color: #9ca3af;\n}\n\n/* Answer box */\n.answer-box {\n    background: #020617;\n    padding: 15px;\n    border-radius: 8px;\n    min-height: 80px;\n    line-height: 1.5;\n    border: 1px solid #374151;\n}",
     "truncated": false
   },
@@ -120,6 +205,7 @@
     "lines": 106,
     "summary": "<!DOCTYPE html>",
     "definitions": [],
+    "parsed": {},
     "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>DevDocs Lite</title>\n    <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap\" rel=\"stylesheet\">\n    <link rel=\"stylesheet\" href=\"/static/style.css\">\n</head>\n<body>\n    <div class=\"app\">\n        <header class=\"header\">\n            <h1>DevDocs Lite</h1>\n            <p>Understand your codebase instantly</p>\n        </header>\n\n        <div class=\"grid\">\n            <div class=\"card\">\n                <h2>Upload Codebase</h2>\n                <input type=\"file\" id=\"fileInput\">\n                <button class=\"primary-btn\" onclick=\"uploadFile()\">Upload</button>\n                <p id=\"uploadStatus\" class=\"status\"></p>\n            </div>\n\n            <div class=\"card\">\n                <h2>Ask Question</h2>\n                <input type=\"text\" id=\"questionInput\" placeholder=\"How does authentication work?\">\n                <button class=\"primary-btn\" onclick=\"askQuestion()\">Ask</button>\n            </div>\n\n            <div class=\"card full-width\">\n                <h2>Answer</h2>\n                <div id=\"answerBox\" class=\"answer-box\">Your answer will appear here...</div>\n            </div>\n        </div>\n    </div>\n\n    <script>\n       async function uploadFile() {\n    const fileInput = document.getElementById(\"fileInput\");\n    const status = document.getElementById(\"uploadStatus\");\n\n    if (!fileInput.files.length) {\n        status.innerText = \"Please select a ZIP file.\";\n        return;\n    }\n\n    const formData = new FormData();\n    formData.append(\"file\", fileInput.files[0]);\n\n    status.innerText = \"Uploading...\";\n\n    try {\n        const response = await fetch(\"/upload\", {\n            method: \"POST\",\n            body: formData\n        });\n\n        // \ud83d\udd25 Handle non-JSON safely\n        const text = await response.text();\n\n        try {\n            const data = JSON.parse(text);\n\n            if (!response.ok) {\n                status.innerText = data.detail || \"Upload failed\";\n                return;\n            }\n\n            status.innerText = data.message;\n\n        } catch {\n            // If response is not JSON\n            status.innerText = \"Server error: \" + text;\n        }\n\n    } catch (error) {\n        status.innerText = \"Network error: \" + error.message;\n    }\n}\n        async function askQuestion() {\n            const question = document.getElementById(\"questionInput\").value;\n            const answerBox = document.getElementById(\"answerBox\");\n\n            if (!question) {\n                answerBox.innerText = \"Please enter a question!\";\n                return;\n            }\n\n            answerBox.innerText = \"Thinking...\";\n\n            try {\n                const response = await fetch(\"/ask\", {\n                    method: \"POST\",\n                    headers: { \"Content-Type\": \"application/json\" },\n                    body: JSON.stringify({ question })\n                });\n\n                const data = await response.json();\n                answerBox.innerText = data.answer;\n            } catch (error) {\n                answerBox.innerText = \"Network error: \" + error.message;\n            }\n        }\n    </script>\n</body>\n</html>",
     "truncated": false
   }
