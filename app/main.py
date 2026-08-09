@@ -29,8 +29,7 @@ from .preview import preview_file
 from .rag import answer_question
 from .search import search_entries
 from .tree import build_tree
-from .utils import ensure_workspace, read_json
-
+from .utils import ensure_workspace, read_json, write_json
 
 app = FastAPI(title="DevDocs Lite", version="0.3.0")
 app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
